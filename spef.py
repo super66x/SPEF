@@ -1,10 +1,28 @@
+#Version 1.1.2
 #this tool was written by super66x
 #https://github.com/super66x/SPEF
 import py_compile
 import marshal
 import os
-logo =''' 
+import time
+import sys 
+#color
+gery = '\033[1:30m'
+red = '\033[1;31m'
+green = '\033[1:32m'
+yellow = '\033[1:33m'
+blue = '\033[1;34m'
+purple = '\033[1;35m'
+cyan = '\033[1;36m'
+white = '\033[1;37m'
 
+def type(z):
+    for e in z + '\n':
+        sys.stdout.write(e)
+        sys.stdout.flush()
+        time.sleep(0.0005)
+logo =f''' 
+{green}
 ███████╗██████╗ ███████╗███████╗
 ██╔════╝██╔══██╗██╔════╝██╔════╝
 ███████╗██████╔╝█████╗  █████╗  
@@ -13,46 +31,44 @@ logo ='''
 ╚══════╝╚═╝     ╚══════╝╚═╝     
                                  
                          
-++++++++++++++++++++++++++++++++++++++++
-github: https://github.com/super66x/SPEF
-++++++++++++++++++++++++++++++++++++++++
+{red}++++++++++++++++++++++++++++++++++++++++
+github:{cyan} https://github.com/super66x/SPEF
+{red}++++++++++++++++++++++++++++++++++++++++
 '''
-choose =''' ######################################
-1_marshal 
+choose =f'''{green} ######################################
+{yellow}1_marshal 
 2_py_compile
 3_exit the tool
-######################################'''
-print(logo)
+{green}######################################'''
+
+type(logo)
 print(choose)
 def marshal_enc():
-    os.system('clear')        
-    os.system('cls')
-    print(logo)
-    file = input("Enter your tool to Encrypt : ")
-    new_file =input("output name : ")    
+    os.system('clear'or 'cls')
+    type(logo)
+    file = input(f"{yellow}Enter your tool to Encrypt :{cyan} ")
+    new_file =input(f"{yellow}output name :{cyan} ")    
     openfile =open(file,'r').read()
     com =compile(openfile,'','exec')
     encrypt =marshal.dumps(com)
     enc =open(str(new_file),'w')
     enc.write('import marshal \n')
     enc.write('exec(marshal.loads('+repr(encrypt)+'))')
-    print(f'the file was encrypted |file saved as {new_file}')
+    print(f'{yellow}the file was encrypted |file saved as {red}{new_file}')
 
 def py_compile_enc():
-    os.system('clear')
-    os.system('cls')
-    tool = input("Enter your tool to Encrypt : ")
+    os.system('clear' or 'cls')
+    tool = input(f"{yellow}Enter your tool to Encrypt :{cyan} ")
     py_compile.compile(tool)
 
 again =0
 while True :
     if again >= 1 :
-        os.system('clear')        
-        os.system('cls')
-        print(logo)
+        os.system('clear'or'cls')
+        type(logo)
         print(choose)
         
-    ask =input("Enter :")
+    ask =input(f"{yellow}Enter :{cyan}")
     if ask == '1':
         marshal_enc()
         again =again+1
@@ -63,5 +79,5 @@ while True :
         break ;
         again =again+1
     else :
-        print("the input is invaild")
+        print(f"{red}the input is invaild")
        
