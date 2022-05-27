@@ -42,7 +42,7 @@ choose =f'''{green} ######################################
 {green}######################################'''
 
 type(logo)
-print(choose)
+type(choose)
 def marshal_enc():
     os.system('clear'or 'cls')
     type(logo)
